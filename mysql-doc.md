@@ -49,3 +49,11 @@ sudo apt-get install tasksel
 ```
 键入命令mysql -u root -p，回车后提示你输密码.输入密码后进入MySQL中，MySQL的提示符是： mysql>
 ```
+
+
+7.退出MySQL
+```
+mysql>exit
+```
+
+
