@@ -119,5 +119,76 @@ $ git log
 ```
 
 
+## Linux的基本使用
 
+
+1.基本的文件操作
+
+* 文件的创建、删除、复制、重命名、移动
+* 列出文件列表
+* 查看文件内容
+
+```
+touch  file
+cp file file1
+cp file  /home/linux/file1
+mv file   file2
+mv file  /home/linux/
+ls -al  .
+cat  file
+```
+
+2.基本的目录操作
+
+* 目录的创建、删除、复制、重命名、移动
+* 列出目录列表
+* 目录中查找文件
+
+
+```
+mkdir dir
+cp dir   dir1  -a
+cp dir   /home/linux/dir2  -a
+mv dir  dir2
+mv dir  /home/linux/
+rm  dir  -rf
+ls -d  dir
+find  ./dir  -name  "filename"
+```
+
+3.文件的归档和压缩
+
+* 使用gzip和gunzip对文件进行压缩和解压缩
+* 使用bzip2和bunzip2对文件进行压缩和解压缩
+* 使用tar对文件和目录进行压缩和解压缩
+
+```
+gzip  filename
+bzip2  filename
+gunzip filename
+bunzip2  filename
+tar czvf  file.tar.gz dir
+tar cjvf  file.tar.bz2 dir
+tar cJvf  file.tar.xz  dir
+tar xvf  file.tar.gz
+tar xvf  file.tar.xz
+```
+4.Vim的基本使用
+
+```
+i：在当前字符的左边插入
+I：在当前行首插入
+a：在当前字符的右边插入
+A：在当前行尾插入
+o：在当前行下面插入一个新行
+O：在当前行上面插入一个新
+h: 向前移动一个字符
+j: 向上移动一行
+k: 向下移动一行
+l: 向后移动一个字符
+yy: 复制当前一行
+dd:剪切当前一行
+p: 粘贴内容到游标之后
+P: 粘贴内容到游标之前
+```
 
