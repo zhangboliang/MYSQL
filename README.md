@@ -10,3 +10,11 @@
 
 
 [ 在LINUX下ubuntu安装MySQL](day3/0001.md)
+
+
+
+[ ](day4/0001.md)
+
+
+
+[CGI ](day5/0001.md)
