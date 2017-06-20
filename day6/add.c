@@ -1,4 +1,4 @@
-```c
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -13,9 +13,10 @@ int cgiMain()
 
 	FILE * fd;
 
-	char name[32] = "\0";
+	char sname[32] = "\0";
 	char age[16] = "\0";
-	char stuId[32] = "\0";
+	char sno[32] = "\0";
+	char sex[20] = "\0";
 	int status = 0;
 	char ch;
 
@@ -103,4 +104,4 @@ int cgiMain()
 	mysql_close(db);
 	return 0;
 }
-```
+
