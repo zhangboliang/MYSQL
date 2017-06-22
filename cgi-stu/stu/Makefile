@@ -1,7 +1,7 @@
 CC=gcc
 AFLAGS=-Wall -g
 LDFLAGS= -lmysqlclient
-OBJS= add.cgi del.cgi mod.cgi sel.cgi couadd.cgi cousel.cgi coumod.cgi coudel.cgi scadd.cgi scsel.cgi scmod.cgi
+OBJS= add.cgi del.cgi mod.cgi sel.cgi couadd.cgi cousel.cgi coumod.cgi coudel.cgi scadd.cgi scsel.cgi scmod.cgi jdel.cgi
 
 all:$(OBJS)
 
@@ -14,3 +14,4 @@ clean:
 
 install:
 	cp *.cgi /usr/lib/cgi-bin/sx/
+	sudo cp head.html footer.html /usr/lib/cgi-bin/sx/

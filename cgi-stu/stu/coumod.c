@@ -4,9 +4,12 @@
 #include <mysql/mysql.h>
 #include "cgic.h"
 
+char * headname = "head.html";
+char * footname = "footer.html";
+
 int cgiMain()
 {
-
+	FILE * fd;
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
 
 	char cname[20] = "\0";
@@ -14,6 +17,20 @@ int cgiMain()
 	char cno[20] = "\0";
 	char dname[20] = "\0";
 	int status = 0;
+	char ch;
+
+		fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
+		if(!(fd = fopen(headname, "r"))){
+			fprintf(cgiOut, "Cannot open file, %s\n", headname);
+			return -1;
+		}
+		ch = fgetc(fd);
+
+		while(ch != EOF){
+			fprintf(cgiOut, "%c", ch);
+			ch = fgetc(fd);
+		}
+		fclose(fd);
 
 	status = cgiFormString("cname",  cname, 20);
 	if (status != cgiFormSuccess)

@@ -4,41 +4,39 @@
 #include <mysql/mysql.h>
 #include "cgic.h"
 
+char * headname = "head.html";
+char * footname = "footer.html";
+
 int cgiMain()
 {
 
 	fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
-
-	char cno[20] = "\0";
-	char score[20] = "\0";
+	FILE * fd;
 	char sno[20] = "\0";
-
 	int status = 0;
+	char ch;
 
-	status = cgiFormString("cno",  cno, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get cno error!\n");
-		return 1;
-	}
+		fprintf(cgiOut, "Content-type:text/html;charset=utf-8\n\n");
+		if(!(fd = fopen(headname, "r"))){
+			fprintf(cgiOut, "Cannot open file, %s\n", headname);
+			return -1;
+		}
+		ch = fgetc(fd);
 
-	status = cgiFormString("score",  score, 20);
-	if (status != cgiFormSuccess)
-	{
-		fprintf(cgiOut, "get score error!\n");
-		return 1;
-	}
+		while(ch != EOF){
+			fprintf(cgiOut, "%c", ch);
+			ch = fgetc(fd);
+		}
+		fclose(fd);
+
 
 	status = cgiFormString("sno",  sno, 20);
 	if (status != cgiFormSuccess)
 	{
-		fprintf(cgiOut, "get sno error!\n");
+		fprintf(cgiOut, "get stuId error!\n");
 		return 1;
 	}
 
-
-
-	//fprintf(cgiOut, "name = %s, age = %s, stuId = %s\n", name, age, stuId);
 
 	int ret;
 	char sql[128] = "\0";
@@ -62,7 +60,7 @@ int cgiMain()
 	}
 
 
-	sprintf(sql, "update score set cno=%d, score= %d where sno= %d  ", atoi(cno), atoi(score), atoi(sno));
+	sprintf(sql, "update student set flag =0 where sno=%d", atoi(sno));
 	if ((ret = mysql_real_query(db, sql, strlen(sql) + 1)) != 0)
 	{
 		fprintf(cgiOut,"mysql_real_query fail:%s\n", mysql_error(db));
@@ -71,8 +69,8 @@ int cgiMain()
 	}
 
 
-
-	fprintf(cgiOut, "update score ok!\n");
+	fprintf(cgiOut, "delete stu ok!\n");
 	mysql_close(db);
+
 	return 0;
 }
